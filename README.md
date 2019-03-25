@@ -38,19 +38,21 @@ creds = service_account.Credentials.from_service_account_file(credential_path)
 
 # use credentials to prepare a GCP service client
 from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
 client = language.LanguageServiceClient(credentials=creds)
 
 # make a call to the NLP API
-from google.cloud.language import enums
-from google.cloud.language import types
 text = u'I love python!'
-document = types.Document(
-    content=text,
-    type=enums.Document.Type.PLAIN_TEXT)
+document = types.Document(content=text,type=enums.Document.Type.PLAIN_TEXT)
 
 # Detects the sentiment of the text
 sentiment = client.analyze_sentiment(document=document).document_sentiment
 
 print('Text: {}'.format(text))
 print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+
+# output:
+# Text: I love python!
+# Sentiment: 0.8999999761581421, 0.8999999761581421
 ```
