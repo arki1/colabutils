@@ -9,7 +9,7 @@ Google Colaboratory Python Utilities
 
 ## gdrive.search_and_download
 
-You can use this method to search the current user Google Drive for a specific file and download it to your environment local path.
+You can use this method to search the current user Google Drive for a specific file and download it to your environment local path. Very useful when your GCP credentials file is shared with the user in his/her google drive.
 
 Example:
 
@@ -55,4 +55,17 @@ print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
 # output:
 # Text: I love python!
 # Sentiment: 0.8999999761581421, 0.8999999761581421
+```
+
+## webcam.take_and_display_photo
+
+Takes a photo using the webcam and saves it in the environment local path. Depends on the user allowing the browser to access the camera.
+
+Example:
+
+```
+from colabutils import webcam
+saved_file_path = webcam.take_and_display_photo()
+
+# if no filename parameter is provided, default file name is photo.jpg
 ```

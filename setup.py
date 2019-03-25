@@ -1,15 +1,17 @@
 import setuptools
+import colabutils
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 install_requires = [
-    'google-api-python-client>=1.7.8',
+    'google-api-python-client>=1.6.7',
+    'ipython>=5.5.0',
 ]
 
 setuptools.setup(
     name="colabutils",
-    version="0.0.1",
+    version=colabutils.__version__,
     author="ARKi1",
     author_email="fabricio@arki1.com",
     description="Utilities to use with Google Colaboratory",
