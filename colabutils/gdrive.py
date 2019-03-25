@@ -2,7 +2,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 import io, os
 
-def search_and_download(filename, local_path):
+def search_and_download(filename, local_path, success_message="Saved [%s] to [%s]"):
     drive_service = build('drive', 'v3')
     results = drive_service.files().list(q="name = '" + filename + "'", fields="files(id)").execute()
     google_credential_file = results.get('files', [])
@@ -22,6 +22,6 @@ def search_and_download(filename, local_path):
         status, done = downloader.next_chunk()
         print("Download %d%%." % int(status.progress() * 100))
 
-    print("Saved [%s] to [%s]" % (filename, local_path))
+    print(success_message % (filename, local_path))
     os.chmod(local_path, 600)
     return local_path
