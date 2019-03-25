@@ -18,7 +18,7 @@ setuptools.setup(
     install_requires=install_requires,
     long_description=long_description,
     long_description_content_type="text/markdown",
-    license=open('LICENSE').read(),
+    license="GNU GENERAL PUBLIC LICENSE V3 (GPLV3)",
     url="https://github.com/arki1/colabutils",
     packages=setuptools.find_packages(),
     classifiers=[
