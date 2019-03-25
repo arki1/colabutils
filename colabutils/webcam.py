@@ -53,3 +53,5 @@ def take_and_display_photo(filename='photo.jpg', quality=0.8):
     # Errors will be thrown if the user does not have a webcam or if they do not
     # grant the page permission to access it.
     print(str(err))
+
+  return filename
