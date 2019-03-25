@@ -70,6 +70,30 @@ saved_file_path = webcam.take_and_display_photo()
 # if no filename parameter is provided, default file name is photo.jpg
 ```
 
+## gcp.load_credentials
+
+Tries to look for a file named `mlcredential.json` in the current user's Google Drive. Returns a service account credential object based on this file.
+
+Example:
+
+```python
+from colabutils import gcp
+creds = gcp.load_credentials()
+```
+
+A custom filename can be provided, such as below:
+
+```python
+creds = gcp.load_credentials("custom_credential.json")
+```
+
+Then just use this in a GCP service client, such as Vision API:
+
+```python
+from google.cloud import vision
+client = vision.ImageAnnotatorClient(credentials=creds)
+```
+
 ## sending new versions to PyPI
 
 Make sure you have the latest versions of `setuptools`, `wheel` and `twine` installed:
