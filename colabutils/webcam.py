@@ -2,6 +2,7 @@ from IPython.display import Image
 from IPython.display import display, Javascript
 from google.colab.output import eval_js
 from base64 import b64decode
+import io
 
 def take_photo(filename='photo.jpg', quality=0.8):
   js = Javascript('''
@@ -43,15 +44,13 @@ def take_photo(filename='photo.jpg', quality=0.8):
   return filename
 
 def take_and_display_photo(filename='photo.jpg', quality=0.8):
-  try:
-    filename = take_photo(filename=filename, quality=quality)
-    print('Saved to {}'.format(filename))
+  filename = take_photo(filename=filename, quality=quality)
+  print('Saved to {}'.format(filename))
 
-    # Show the image which was just taken.
-    display(Image(filename))
-  except Exception as err:
-    # Errors will be thrown if the user does not have a webcam or if they do not
-    # grant the page permission to access it.
-    print(str(err))
+  # Show the image which was just taken.
+  display(Image(filename))
 
-  return filename
+  with io.open(filename, 'rb') as image_file:
+      content = image_file.read()
+
+  return content

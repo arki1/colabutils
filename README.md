@@ -59,15 +59,15 @@ print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
 
 ## webcam.take_and_display_photo
 
-Takes a photo using the webcam and saves it in the environment local path. Depends on the user allowing the browser to access the camera.
+Takes a photo using the webcam and saves it in the environment local path. Depends on the user allowing the browser to access the camera. Returns the image content (from a `.read()` on that file).
+
+If no filename parameter is provided, default file name used in the process is photo.jpg.
 
 Example:
 
 ```python
 from colabutils import webcam
-saved_file_path = webcam.take_and_display_photo()
-
-# if no filename parameter is provided, default file name is photo.jpg
+image_content = webcam.take_and_display_photo()
 ```
 
 ## gcp.load_credentials
