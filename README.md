@@ -3,6 +3,8 @@ Google Colaboratory Python Utilities
 
 ## installing
 
+In order to use this package in your Colaboratory Notebook, include this piece of code in the top of your notebook:
+
 ```
 !pip install colabutils
 ```
@@ -92,30 +94,6 @@ Then just use this in a GCP service client, such as Vision API:
 ```python
 from google.cloud import vision
 client = vision.ImageAnnotatorClient(credentials=creds)
-```
-
-## gsheet.get_range
-
-Use this method to obtain a range in A1 notation (eg: A3:C5) from a Google Spreadsheet.
-
-```python
-# authenticates the user so we can have access to their spreadsheets
-from google.colab import auth
-auth.authenticate_user()
-
-# set the spreadsheet ID we are going to use
-SPREADSHEET_ID = 'ad23g-2dfrg-fsgf24r23d23kgwd32d32'
-
-from colabutils import gsheets
-values = gsheets.get_range(SPREADSHEET_ID, 'A3:C5')
-values # [['b',2,'betta'],['c',3,'gamma']]
-```
-
-## gsheet.update_cell
-
-Use this method to update a single cell in a Google Spreadsheet.
-```python
-gsheets.update_cell(SPREADSHEET_ID, 'A5', 'beta')
 ```
 
 ## sending new versions to PyPI
