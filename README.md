@@ -63,9 +63,28 @@ Takes a photo using the webcam and saves it in the environment local path. Depen
 
 Example:
 
-```
+```python
 from colabutils import webcam
 saved_file_path = webcam.take_and_display_photo()
 
 # if no filename parameter is provided, default file name is photo.jpg
+```
+
+## sending new versions to PyPI
+
+Make sure you have the latest versions of `setuptools`, `wheel` and `twine` installed:
+
+```
+python3 -m pip install --user --upgrade setuptools wheel twine
+```
+
+Run this to generate the new version on the `/dist` folder.
+```
+python3 setup.py sdist bdist_wheel
+```
+
+Run this to upload the contents of the `/dist` folder to PyPI.
+
+```
+python3 -m twine upload dist/*
 ```
