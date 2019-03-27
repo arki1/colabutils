@@ -98,6 +98,16 @@ client = vision.ImageAnnotatorClient(credentials=creds)
 
 ## sending new versions to PyPI
 
+Add the file `~/.pypirc` with the following content:
+
+```
+[distutils]
+index-servers=pypi
+[pypi]
+repository = https://upload.pypi.org/legacy/
+username = <your_username>
+```
+
 Make sure you have the latest versions of `setuptools`, `wheel` and `twine` installed:
 
 ```
