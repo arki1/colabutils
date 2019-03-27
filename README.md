@@ -11,7 +11,9 @@ In order to use this package in your Colaboratory Notebook, include this piece o
 
 ## gdrive.search_and_download
 
-You can use this method to search the current user Google Drive for a specific file and download it to your environment local path. Very useful when your GCP credentials file is shared with the user in his/her google drive.
+You can use this method to search the current user Google Drive for a specific file and download it to your environment local path.
+
+If you plan to use this method to load your GCP credentials from a Google Drive file, check the method [`gcp.load_credentials()`](#gcpload_credentials).
 
 Example:
 
@@ -89,7 +91,7 @@ A custom filename can be provided, such as below:
 creds = gcp.load_credentials("custom_credential.json")
 ```
 
-Then just use this in a GCP service client, such as Vision API:
+Then just use the credential in a GCP service client (in this case `creds`), such as Vision API:
 
 ```python
 from google.cloud import vision
