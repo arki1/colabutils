@@ -1,6 +1,7 @@
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 import io, os
+import zipfile
 
 def search_and_download(filename, local_path, custom_message=""):
     drive_service = build('drive', 'v3')
@@ -29,3 +30,18 @@ def search_and_download(filename, local_path, custom_message=""):
         print("Saved [%s] to [%s]" % (filename, local_path))
 
     return local_path
+
+
+def download_and_unzip(filename, path_to):
+    if not path_to.endswith("/"):
+        path_to = path_to + "/"
+
+    localfile = search_and_download(filename, path_to + filename)
+
+    zip_ref = zipfile.ZipFile(localfile, 'r')
+    zip_ref.extractall()
+    zip_ref.close()
+
+    os.remove(localfile)
+
+    return path_to

@@ -61,6 +61,18 @@ print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
 # Sentiment: 0.8999999761581421, 0.8999999761581421
 ```
 
+## gdrive.download_and_unzip
+
+You can use this method to search the current user Google Drive for a specific file, download it to your environment local path, unzip it's contents and automatically remove the downloaded zip file.
+
+```python
+from colabutils import gdrive
+extracted_path = gdrive.download_and_unzip("books_dataset.zip", "/content")
+
+# lets see its contents
+!ls /content
+```
+
 ## webcam.take_and_display_photo
 
 Takes a photo using the webcam and saves it in the environment local path. Depends on the user allowing the browser to access the camera. Returns the image content (from a `.read()` on that file).
