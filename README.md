@@ -6,7 +6,7 @@ Google Colaboratory Python Utilities
 In order to use this package in your Colaboratory Notebook, include this piece of code in the top of your notebook:
 
 ```
-!pip install colabutils
+!pip install --upgrade -q colabutils
 ```
 
 ## gdrive.search_and_download
@@ -86,6 +86,32 @@ from colabutils import webcam
 image_content = webcam.take_and_display_photo()
 ```
 
+## audio.record
+
+Allows the user to start recording the audio (from the microphone), returning its contents when the user clicks 'finish'.
+
+The audio may be auto-played at the end of the recording, using the optional parameter `auto_play` is equals to `True`.
+
+Example:
+
+```python
+from colabutils import audio
+audio_content = audio.record()
+```
+
+## audio.record_and_save
+
+Allows the user to start recording the audio (from the microphone), saving it to a file when the user clicks 'finish'.
+
+If no filename parameter is provided, default file name used in the process is audio.wav.
+
+Example:
+
+```python
+from colabutils import audio
+audio_filename = audio.record_and_save()
+```
+
 ## gcp.load_credentials
 
 Tries to look for a file named `mlcredential.json` in the current user's Google Drive. Returns a service account credential object based on this file.
@@ -97,17 +123,17 @@ from colabutils import gcp
 creds = gcp.load_credentials()
 ```
 
-A custom filename can be provided, such as below:
-
-```python
-creds = gcp.load_credentials("custom_credential.json")
-```
-
-Then just use the credential in a GCP service client (in this case `creds`), such as Vision API:
+Then just use the credential (in this case `creds`) in a GCP service client, such as Vision API:
 
 ```python
 from google.cloud import vision
 client = vision.ImageAnnotatorClient(credentials=creds)
+```
+
+A custom filename can be provided, such as below:
+
+```python
+creds = gcp.load_credentials("custom_credential.json")
 ```
 
 ## sending new versions to PyPI
