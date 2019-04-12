@@ -136,7 +136,7 @@ A custom filename can be provided, such as below:
 creds = gcp.load_credentials("custom_credential.json")
 ```
 
-## vision.list_faces
+## vision_utils.list_faces
 
 Describes the faces returned in `face_annotations` by a Vision API `face_detection` call.
 
@@ -145,11 +145,11 @@ Example:
 ```python
 resp = client.face_detection(image=my_image)
 
-from colabutils import vision
-vision.list_faces(resp.face_annotations)
+from colabutils import vision_utils
+vision_utils.list_faces(resp.face_annotations)
 ```
 
-## vision.list_annotations
+## vision_utils.list_annotations
 
 Describes the faces returned in `text_annotations` by a Vision API `text_detection` call.
 
@@ -158,8 +158,8 @@ Example:
 ```python
 resp = client.text_detection(image=my_image)
 
-from colabutils import vision
-vision.list_annotations(resp.text_annotations)
+from colabutils import vision_utils
+vision_utils.list_annotations(resp.text_annotations)
 ```
 
 ## sending new versions to PyPI
