@@ -136,6 +136,32 @@ A custom filename can be provided, such as below:
 creds = gcp.load_credentials("custom_credential.json")
 ```
 
+## vision.list_faces
+
+Describes the faces returned in `face_annotations` by a Vision API `face_detection` call.
+
+Example:
+
+```python
+resp = client.face_detection(image=my_image)
+
+from colabutils import vision
+vision.list_faces(resp.face_annotations)
+```
+
+## vision.list_annotations
+
+Describes the faces returned in `text_annotations` by a Vision API `text_detection` call.
+
+Example:
+
+```python
+resp = client.text_detection(image=my_image)
+
+from colabutils import vision
+vision.list_annotations(resp.text_annotations)
+```
+
 ## sending new versions to PyPI
 
 Add the file `~/.pypirc` with the following content:
