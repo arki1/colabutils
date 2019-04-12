@@ -34,3 +34,10 @@ def list_annotations(annotations):
     print('no text found!')
   else:
     print('\n'.join([d.description for d in annotations]))
+
+
+def list_labels(labels):
+  if len(labels) == 0:
+    print('no label found!')
+  else:
+    print('\n'.join(['{} ({})'.format(d.description, d.score*100) for d in labels]))
