@@ -4,8 +4,8 @@ import requests
 from google.oauth2 import service_account
 from colabutils import gdrive
 
-def load_credentials(url="", gdrivefile="mlcredential.json", localpath="/content/.google/mlcredential.json"):
-  if url is "":
+def load_credentials(url=None, gdrivefile="mlcredential.json", localpath="/content/.google/mlcredential.json"):
+  if url is "" or url is None:
     credentials_localpath = gdrive.search_and_download(
         gdrivefile, localpath, "Credentials loaded successfully")
   else:
